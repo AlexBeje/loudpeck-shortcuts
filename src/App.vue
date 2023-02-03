@@ -34,7 +34,7 @@ const actualShortcut = ref('lightroom');
         </button>
       </div>
       <img
-        :src="'src/assets/adobe-' + actualShortcut + '.png'"
+        :src="'/assets/adobe-' + actualShortcut + '.png'"
         alt="Vue logo"
       />
     </div>
