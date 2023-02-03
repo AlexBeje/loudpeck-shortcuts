@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@websitebeaver/vue-magnifier": "^1.1.0",
     "sass": "^1.58.0",
     "vue": "^3.2.45"
   },

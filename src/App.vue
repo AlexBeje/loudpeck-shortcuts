@@ -1,6 +1,10 @@
 <script setup>
+import VueMagnifier from '@websitebeaver/vue-magnifier';
+import '@websitebeaver/vue-magnifier/styles.css';
+
 import { ref } from 'vue';
 const actualShortcut = ref('lightroom');
+const showMagnifier = ref(false);
 </script>
 
 <template>
@@ -32,10 +36,18 @@ const actualShortcut = ref('lightroom');
           />
           Lightroom
         </button>
+        <div class="last-item" />
       </div>
-      <img
+      <VueMagnifier
         :src="'/images/adobe-' + actualShortcut + '.png'"
-        alt="Shortcut image"
+        mgWidth="350"
+        mgHeight="350"
+        mgCornerBgColor="#323232"
+        mgShape="square"
+        zoomFactor=".5"
+        :mgShow="showMagnifier"
+        @click="showMagnifier = !showMagnifier"
+        className="magnifier"
       />
     </div>
     <div class="after-bg" />
@@ -44,6 +56,7 @@ const actualShortcut = ref('lightroom');
 
 <style scoped lang="scss">
 .container {
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -57,16 +70,13 @@ const actualShortcut = ref('lightroom');
     background: #323232;
     .button-group {
       width: 100%;
-      min-width: 900px;
-      max-width: 1120px;
+      min-width: 740px;
+      max-width: 1280px;
       height: 40px;
-      margin: -64px 50px 16px auto;
-      left: 0;
-      right: 0;
+      margin: -64px auto 16px auto;
       display: flex;
       justify-content: flex-end;
       gap: 8px;
-      position: fixed;
       button {
         background: #222222;
         border: 4px solid #0a0c0b;
@@ -76,6 +86,9 @@ const actualShortcut = ref('lightroom');
         display: flex;
         align-items: center;
         line-height: 0;
+      }
+      .last-item {
+        margin: 3%;
       }
       .active {
         width: 6px;
@@ -94,13 +107,16 @@ const actualShortcut = ref('lightroom');
         margin-bottom: 2px;
       }
     }
-    img {
+    .magnifier {
       flex: 1;
       margin: auto;
       min-width: 740px;
       max-width: 1280px;
       width: 100%;
       flex: 1;
+      :hover {
+        cursor: zoom-in;
+      }
     }
   }
   .after-bg {
