@@ -34,8 +34,8 @@ const actualShortcut = ref('lightroom');
         </button>
       </div>
       <img
-        :src="'src/assets/adobe-' + actualShortcut + '.png'"
-        alt="Vue logo"
+        :src="'/images/adobe-' + actualShortcut + '.png'"
+        alt="Shortcut image"
       />
     </div>
     <div class="after-bg" />
